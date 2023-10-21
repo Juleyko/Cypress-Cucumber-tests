@@ -5,7 +5,7 @@
   },
   "scripts": {
     "cypress:run:cucumber": "cypress run --spec 'cypress/integration/**/*.feature'",
-    "start": "npx cypress run"
+    "start": "npx cypress run --record"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^18.0.6",
