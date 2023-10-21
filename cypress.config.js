@@ -44,6 +44,7 @@ async function setupNodeEvents(on, config) {
 }
 
 module.exports = defineConfig({
+  projectId: "3t2h6z",
   e2e: {
     baseUrl: "https://telnyx.com/",
     specPattern: "**/*.feature",
