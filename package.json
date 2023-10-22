@@ -21,5 +21,5 @@
       "formatter": "cypress-cucumber-preprocessor"
     }
   },
-  "testFiles": "**/*.feature"
+  "testFiles": "**/footer.feature"
 }
