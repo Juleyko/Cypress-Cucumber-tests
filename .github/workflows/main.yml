@@ -44,17 +44,17 @@ jobs:
         with:
           name: cypress-cucumber-report
           path: reports/
-      - name: Get Allure history
-        uses: actions/checkout@v2
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
+      # - name: Checkout to gh-pages branch
+      #   uses: actions/checkout@v2
+      #   if: always()
+      #   continue-on-error: true
+      #   with:
+      #     ref: gh-pages
+      #     path: gh-pages
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
+          # publish_branch: gh-pages
           publish_dir: ./reports
