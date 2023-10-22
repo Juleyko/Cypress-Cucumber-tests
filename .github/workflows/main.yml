@@ -44,3 +44,9 @@ jobs:
         with:
           name: cypress-cucumber-report
           path: reports/
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./reports
