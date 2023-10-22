@@ -1,7 +1,7 @@
 {
   "description": "",
   "scripts": {
-    "cypress:run:cucumber": "cypress run --spec 'cypress/integration/**/footer.feature'",
+    "cypress:run:cucumber": "cypress run --spec 'cypress/integration/**/*.feature'",
     "start": "npx cypress run --record"
   },
   "dependencies": {
