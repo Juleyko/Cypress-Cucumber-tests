@@ -6,10 +6,10 @@ jobs:
     # Runs tests in parallel with matrix strategy https://docs.cypress.io/guides/guides/parallelization
     # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
     # Also see warning here https://github.com/cypress-io/github-action#parallel
-    strategy:
-      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
-      matrix:
-        containers: [1, 2] # Uses 2 parallel instances
+    # strategy:
+    #   fail-fast: false # https://github.com/cypress-io/github-action/issues/48
+    #   matrix:
+    #     containers: [1, 2] # Uses 2 parallel instances
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -39,6 +39,11 @@ jobs:
         with:
           # generate report page
           start: node cucumber-html-report.js
+      - name: Upload report
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-cucumber-report
+          path: reports/
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
@@ -46,14 +51,10 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
-      - name: Upload report
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-cucumber-report
-          path: reports/
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./reports
