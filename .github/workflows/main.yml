@@ -39,6 +39,13 @@ jobs:
         with:
           # generate report page
           start: node cucumber-html-report.js
+      - name: Get Allure history
+        uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
       - name: Upload report
         uses: actions/upload-artifact@v2
         with:
