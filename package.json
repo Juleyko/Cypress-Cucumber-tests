@@ -1,19 +1,25 @@
 {
   "description": "",
-  "devDependencies": {
-    "cypress": "^13.3.1"
-  },
   "scripts": {
-    "cypress:run:cucumber": "cypress run --spec 'cypress/integration/**/*.feature'",
+    "cypress:run:cucumber": "cypress run --spec 'cypress/integration/**/footer.feature'",
     "start": "npx cypress run --record"
+  },
+  "devDependencies": {
+    "cypress": "^13.3.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "multiple-cucumber-html-reporter": "^3.5.0"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^18.0.6",
-    "@cypress/browserify-preprocessor":"3.0.2"
+    "@cypress/browserify-preprocessor": "3.0.2"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
-  }, 
-    "testFiles": "**/*.feature" 
-  }
-
+    "nonGlobalStepDefinitions": true,
+    "json": {
+      "enabled": true,
+      "output": "cypress/reports/json/cucumber-report.json",
+      "formatter": "cypress-cucumber-preprocessor"
+    }
+  },
+  "testFiles": "**/*.feature"
+}
