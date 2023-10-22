@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
       - name: Install dependencies
@@ -35,10 +35,10 @@ jobs:
         # generate report page
         run: node cucumber-html-report.js
       - name: Upload report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: cypress-cucumber-report
-          path: /reports/cucumber-htmlreport
+          path: reports/cucumber-htmlreport
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
